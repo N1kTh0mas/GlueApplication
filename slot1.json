@@ -1,0 +1,15 @@
+{
+  "/textbright": {
+    "min": 0,
+    "max": 255,
+    "value": 79.05000305175781
+  },
+  "/BackGroundC": {
+    "min": 0,
+    "max": 255,
+    "value": 255
+  },
+  "/buttoncolor": {"value": -6372609},
+  "/highcolor": {"value": -360327},
+  "/Actcolor": {"value": -65695}
+}
