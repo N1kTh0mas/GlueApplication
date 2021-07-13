@@ -38,14 +38,12 @@ public int c;
 public String command = "";
 Textarea txt;
 Println console;
-public String ard_input = "";
-public String[] reform;
 
 void setup(){
  size( 800,480) ;
  noStroke();
 String portName = Serial.list()[1];
-port = new Serial(this, portName, 9600);
+port = new Serial(this, portName, 115200);
 
 PFont p = createFont("Arial",10,true);
 ControlFont font = new ControlFont(p,20);
@@ -525,11 +523,6 @@ ControlFont font3 = new ControlFont(p,10);
   
  void draw(){
    background(BackGroundC); 
-  
-    
-   
-   
-   
    //Color Updates
    
    //Background

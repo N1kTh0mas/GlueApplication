@@ -1,7 +1,26 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import controlP5.*; 
+import processing.serial.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Button_Controllerv2 extends PApplet {
 
 
-import controlP5.*;
-import processing.serial.*;
+
+
+
 
 Serial port;
 
@@ -38,14 +57,12 @@ public int c;
 public String command = "";
 Textarea txt;
 Println console;
-public String ard_input = "";
-public String[] reform;
 
-void setup(){
- size( 800,480) ;
+public void setup(){
+ 
  noStroke();
 String portName = Serial.list()[1];
-port = new Serial(this, portName, 9600);
+port = new Serial(this, portName, 115200);
 
 PFont p = createFont("Arial",10,true);
 ControlFont font = new ControlFont(p,20);
@@ -523,13 +540,8 @@ ControlFont font3 = new ControlFont(p,10);
  
 }
   
- void draw(){
+ public void draw(){
    background(BackGroundC); 
-  
-    
-   
-   
-   
    //Color Updates
    
    //Background
@@ -563,53 +575,53 @@ ControlFont font3 = new ControlFont(p,10);
       
   }
  //Button Actions
- void Clear(){
+ public void Clear(){
    command = "";
    println("...");
  }
- void X(){
+ public void X(){
    command = command + "x";
    print(" X: ");
    
  }
- void Y(){
+ public void Y(){
    command = command + "y";
    print(" Y: ");
  }
- void Center(){
+ public void Center(){
    command = command + "t";
    println(" Center ");
  }
- void XYSpeed(){
+ public void XYSpeed(){
    command = command + "p";
    print(" XY Speed: ");
  }
- void XYAcel(){
+ public void XYAcel(){
    command = command + "a";
    print(" XY Acel: ");
  }
- void ArmSpeed(){
+ public void ArmSpeed(){
    command = command + "u";
    print(" Arm Speed: ");
  }
- void NeedleSpeed(){
+ public void NeedleSpeed(){
    command = command + "b";
    print(" Needle Speed: " );
  }
- void Calibrate(){
+ public void Calibrate(){
    command = command + "C";
    println(" Calibrate ");
  }
- void Info(){
+ public void Info(){
    command = command + "i";
    println(" Info ");
  }
- void Step(){
+ public void Step(){
    command = command + "f";
    print(" Step: ");
  }
  
- void Confirm(){
+ public void Confirm(){
   port.write(command);
  
   print("... Running: ");
@@ -617,71 +629,71 @@ ControlFont font3 = new ControlFont(p,10);
    command = "";
  }
  
- void one(){
+ public void one(){
    command = command + "1";
    print("1");
  }
- void two(){
+ public void two(){
    command = command + "2";
    print("2");
  }
- void three(){
+ public void three(){
    command = command + "3";
    print("3");
  }
- void four(){
+ public void four(){
    command = command + "4";
    print("4");
  }
- void five(){
+ public void five(){
    command = command + "5";
    print("5");
  }
- void six(){
+ public void six(){
    command = command + "6";
    print("6");
  }
- void seven(){
+ public void seven(){
    command = command + "7";
    print("7");
  }
- void eight(){
+ public void eight(){
    command = command + "8";
    print("8");
  }
- void nine(){
+ public void nine(){
    command = command + "9";
    print("9");
  }
- void zero(){
+ public void zero(){
    command = command + "0";
    print("0");
  }
  
  
  
- void Extend(){
+ public void Extend(){
    port.write('o'); 
  }
- void Retract(){
+ public void Retract(){
    port.write('c');
  }
- void Extend2(){
+ public void Extend2(){
    port.write('e');
  }
- void Retract2(){
+ public void Retract2(){
    port.write('r');
  }
- void ExtendFull(){
+ public void ExtendFull(){
    port.write('E');
  }
- void Stop(){
+ public void Stop(){
    port.write('s');
  }
- void b1() {
+ public void b1() {
    cp5.saveProperties("slot1", "slot1");
  }
- void b2() {
+ public void b2() {
    cp5.loadProperties(("slot1"));
    ColorWheel cw = (ColorWheel) cp5.getController("buttoncolor");
    cw.setRGB((int) cw.getValue());
@@ -695,10 +707,10 @@ ControlFont font3 = new ControlFont(p,10);
    cw3.setRGB((int) cw3.getValue());
    Actcolor = (int) cw3.getValue();
  }
- void b3() {
+ public void b3() {
    cp5.saveProperties("default", "default");
  }
- void b4() {
+ public void b4() {
    cp5.loadProperties(("default.json"));
    ColorWheel cw = (ColorWheel) cp5.getController("buttoncolor");
    cw.setRGB((int) cw.getValue());
@@ -714,3 +726,13 @@ ControlFont font3 = new ControlFont(p,10);
  }
 
  
+  public void settings() {  size( 800,480) ; }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "--present", "--window-color=#666666", "--stop-color=#cccccc", "Button_Controllerv2" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
